@@ -1,3 +1,7 @@
 index:
     path: /
     controller: App\Controller\YoutubevideoController::index
+
+show:
+    path: /show/{id}
+    controller: App\Controller\YoutubevideoController::show

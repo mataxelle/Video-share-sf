@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ video.name }}
+{% endblock %}
+
+{% block body %}
+	<div>
+		<div class="mt-5">
+			{{ video.url|video_player|raw }}
+		</div>
+		<h1 class="my-2">{{ video.name }}<h1>
+	</div>
+{% endblock %}

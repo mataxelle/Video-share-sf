@@ -34,4 +34,11 @@ class YoutubevideoController extends AbstractController
             'videos' => $videoRepository->findAll()
         ]);
     }
+
+    public function show(int $id, VideoRepository $videoRepository): Response
+    {
+        return $this->render('youtubevideo/show.html.twig', [
+            'video' => $videoRepository->find($id)
+        ]);
+    }
 }
