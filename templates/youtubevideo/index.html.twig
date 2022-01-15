@@ -1,15 +1,38 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello YoutubevideoController!{% endblock %}
+{% block title %}Hello !
+{% endblock %}
 
 {% block body %}
-<div class="example-wrapper">
-    <h1>Hello ! ✅</h1>
+	<div>
+		{% if not videos %}
+			<div>
+				<p>No content !</p>
+				<p>Be the first to add a video !</p>
+			</div>
 
-    {{ form(form) }}
+		{% else %}
+            <h1>All videos</h1>
 
-    {% for video in videos %}
-        <p>{{ video.name }}</p>
-    {% endfor %}
-</div>
+			<div class="row row-cols-1 row-cols-md-2 g-4">
+				{% for video in videos %}
+                    <div class="col">
+					    <div class="card">
+						    <a href="{{ path('index', {'id': video.id }) }}"><img src="{{ video.url|video_thumbnail }}" class="card-img-top" alt="video thumbnail"></a>
+						    <div class="card-body">
+							    <h5 class="card-title">{{ video.name }}</h5>
+							    <a href="{{ path('index', {'id': video.id }) }}" class="btn btn-primary">Play</a>
+                            </div>
+						</div>
+                    </div>    
+				{% endfor %}
+			</div>
+
+		{% endif %}
+	</div>
+
+	<div>
+		<h2>Add a video<h2>
+		{{ form(form) }}
+    </div>
 {% endblock %}
